@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "typeCompte" : {
+            "home": {
+                "title": "Type Comptes",
+                "createLabel": "Create a new Type Compte",
+                "createOrEditLabel": "Create or edit a Type Compte"
+            },
+            "created": "A new Type Compte is created with identifier {{ param }}",
+            "updated": "A Type Compte is updated with identifier {{ param }}",
+            "deleted": "A Type Compte is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Compte {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Compte"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

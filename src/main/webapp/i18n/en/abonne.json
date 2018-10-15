@@ -1,0 +1,25 @@
+
+{
+    "ebankingApp": {
+        "abonne" : {
+            "home": {
+                "title": "Abonnes",
+                "createLabel": "Create a new Abonne",
+                "createOrEditLabel": "Create or edit a Abonne"
+            },
+            "created": "A new Abonne is created with identifier {{ param }}",
+            "updated": "A Abonne is updated with identifier {{ param }}",
+            "deleted": "A Abonne is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Abonne {{ id }}?"
+            },
+            "detail": {
+                "title": "Abonne"
+            },
+            "telephone": "Telephone",
+            "agence": "Agence",
+            "gestionnaire": "Gestionnaire",
+            "user": "User"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "parametres" : {
+            "home": {
+                "title": "Liste des Paramétres",
+                "createLabel": "Créer un Paramétres",
+                "createOrEditLabel": "Créer ou éditer un Parametres"
+            },
+            "created": "Un nouveau Parametres a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Parametres avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Parametres avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Parametres {{ id }} ?"
+            },
+            "detail": {
+                "title": "Parametres"
+            },
+            "cle": "Cle",
+            "valeur": "Valeur",
+            "deleted": "Deleted"
+        }
+    }
+}

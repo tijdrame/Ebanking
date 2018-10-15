@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "typeAbonne" : {
+            "home": {
+                "title": "Liste des Types d'Abonné",
+                "createLabel": "Créer un nouveau Type Abonne",
+                "createOrEditLabel": "Créer ou éditer un Type Abonne"
+            },
+            "created": "Un nouveau Type Abonne a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Abonne avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Abonne avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Abonne {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type Abonne"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "achatBb",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "achatTc",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "achatTr",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "venteBb",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "venteTc",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "venteTr",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "dateMaj",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181004104259",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "devise",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

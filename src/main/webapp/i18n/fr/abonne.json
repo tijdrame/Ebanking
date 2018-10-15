@@ -1,0 +1,25 @@
+
+{
+    "ebankingApp": {
+        "abonne" : {
+            "home": {
+                "title": "Liste des Abonnés",
+                "createLabel": "Créer un nouveau Abonné",
+                "createOrEditLabel": "Créer ou éditer un Abonne"
+            },
+            "created": "Un nouveau Abonne a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Abonne avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Abonne avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Abonne {{ id }} ?"
+            },
+            "detail": {
+                "title": "Abonné"
+            },
+            "telephone": "Téléphone",
+            "agence": "Agence",
+            "gestionnaire": "Gestionnaire",
+            "user": "User"
+        }
+    }
+}

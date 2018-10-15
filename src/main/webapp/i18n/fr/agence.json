@@ -1,0 +1,29 @@
+
+{
+    "ebankingApp": {
+        "agence" : {
+            "home": {
+                "title": "Agences",
+                "createLabel": "Créer une Agence",
+                "createOrEditLabel": "Créer ou éditer une Agence"
+            },
+            "created": "Un nouveau Agence a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Agence avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Agence avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Agence {{ id }} ?"
+            },
+            "detail": {
+                "title": "Agence"
+            },
+            "nom": "Nom",
+            "email": "Email",
+            "telephone": "Telephone",
+            "adresse": "Adresse",
+            "longitude": "Longitude",
+            "latitude": "Latitude",
+            "etatGab": "Etat Gab",
+            "deleted": "Deleted"
+        }
+    }
+}

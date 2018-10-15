@@ -1,0 +1,67 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "operationType",
+            "otherEntityName": "operationType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "priseEnCharge",
+            "otherEntityName": "priseEnCharge",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "compte",
+            "otherEntityName": "compte",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "numero"
+        },
+        {
+            "relationshipName": "operationsVirement",
+            "otherEntityName": "operationsVirement",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "operation"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateOperation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateAcceptation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateExecution",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "motif",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numeroTransaction",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181012115705",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "operation",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

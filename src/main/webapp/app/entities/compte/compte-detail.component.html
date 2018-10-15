@@ -1,0 +1,64 @@
+
+<div *ngIf="compte">
+    <h2><span jhiTranslate="ebankingApp.compte.detail.title">Compte</span> {{compte.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.compte.numero">Numero</span></dt>
+        <dd>
+            <span>{{compte.numero}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.numeroComplet">Numero Complet</span></dt>
+        <dd>
+            <span>{{compte.numeroComplet}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.libelle">Libelle</span></dt>
+        <dd>
+            <span>{{compte.libelle}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.solde">Solde</span></dt>
+        <dd>
+            <span>{{compte.solde}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{compte.deleted}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.sens">Sens</span></dt>
+        <dd>
+            <span>{{compte.sens}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.abonne">Abonne</span></dt>
+        <dd>
+            <div *ngIf="compte.abonne">
+                <a [routerLink]="['/abonne', compte.abonne?.id]">{{compte.abonne?.user?.firstName}} {{compte.abonne?.user?.lastName}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.devise">Devise</span></dt>
+        <dd>
+            <div *ngIf="compte.devise">
+                <a [routerLink]="['/devise', compte.devise?.id]">{{compte.devise?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.compte.typeCompte">Type Compte</span></dt>
+        <dd>
+            <div *ngIf="compte.typeCompte">
+                <a [routerLink]="['/type-compte', compte.typeCompte?.id]">{{compte.typeCompte?.libelle}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'compte/'+ compte.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

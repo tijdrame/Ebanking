@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "banquesPartenaires" : {
+            "home": {
+                "title": "Liste des Banques Partenaire",
+                "createLabel": "Créer une Banque Partenaire",
+                "createOrEditLabel": "Créer ou éditer une Banque Partenaire"
+            },
+            "created": "Une nouvelle Banque Partenaire a été créé avec l'identifiant {{ param }}",
+            "updated": "La Banque Partenaire avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Banque Partenaire avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Banque Partenaire {{ id }} ?"
+            },
+            "detail": {
+                "title": "Banque Partenaire"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

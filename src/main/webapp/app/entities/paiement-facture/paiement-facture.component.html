@@ -1,0 +1,104 @@
+<div>
+    <h2>
+        <span jhiTranslate="ebankingApp.paiementFacture.home.title">Paiement Factures</span>
+        <button class="btn btn-primary float-right jh-create-entity create-paiement-facture" [routerLink]="['/', { outlets: { popup: ['paiement-facture-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ebankingApp.paiementFacture.home.createLabel">
+            Create new Paiement Facture
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="paiementFactures">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numeroFacture"><span jhiTranslate="ebankingApp.paiementFacture.numeroFacture">Numero Facture</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="montant"><span jhiTranslate="ebankingApp.paiementFacture.montant">Montant</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateDebut"><span jhiTranslate="ebankingApp.paiementFacture.dateDebut">Date Debut</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateFin"><span jhiTranslate="ebankingApp.paiementFacture.dateFin">Date Fin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateAcceptation"><span jhiTranslate="ebankingApp.paiementFacture.dateAcceptation">Date Acceptation</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateDemande"><span jhiTranslate="ebankingApp.paiementFacture.dateDemande">Date Demande</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="estTelecharge"><span jhiTranslate="ebankingApp.paiementFacture.estTelecharge">Est Telecharge</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="deleted"><span jhiTranslate="ebankingApp.paiementFacture.deleted">Deleted</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="devise.libelle"><span jhiTranslate="ebankingApp.paiementFacture.devise">Devise</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="compte.libelle"><span jhiTranslate="ebankingApp.paiementFacture.compte">Compte</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="facturier.libelle"><span jhiTranslate="ebankingApp.paiementFacture.facturier">Facturier</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="statut.libelle"><span jhiTranslate="ebankingApp.paiementFacture.statut">Statut</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let paiementFacture of paiementFactures ;trackBy: trackId">
+                <td><a [routerLink]="['../paiement-facture', paiementFacture.id ]">{{paiementFacture.id}}</a></td>
+                <td>{{paiementFacture.numeroFacture}}</td>
+                <td>{{paiementFacture.montant}}</td>
+                <td>{{paiementFacture.dateDebut | date:'mediumDate'}}</td>
+                <td>{{paiementFacture.dateFin | date:'mediumDate'}}</td>
+                <td>{{paiementFacture.dateAcceptation | date:'mediumDate'}}</td>
+                <td>{{paiementFacture.dateDemande | date:'mediumDate'}}</td>
+                <td>{{paiementFacture.estTelecharge}}</td>
+                <td>{{paiementFacture.deleted}}</td>
+                <td>
+                    <div *ngIf="paiementFacture.devise">
+                        <a [routerLink]="['../devise', paiementFacture.devise?.id ]" >{{paiementFacture.devise?.libelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paiementFacture.compte">
+                        <a [routerLink]="['../compte', paiementFacture.compte?.id ]" >{{paiementFacture.compte?.libelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paiementFacture.facturier">
+                        <a [routerLink]="['../facturier', paiementFacture.facturier?.id ]" >{{paiementFacture.facturier?.libelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paiementFacture.statut">
+                        <a [routerLink]="['../statut', paiementFacture.statut?.id ]" >{{paiementFacture.statut?.libelle}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../paiement-facture', paiementFacture.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'paiement-facture/'+ paiementFacture.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'paiement-facture/'+ paiementFacture.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="paiementFactures && paiementFactures.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

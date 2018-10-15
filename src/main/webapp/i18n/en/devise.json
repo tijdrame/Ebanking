@@ -1,0 +1,31 @@
+
+{
+    "ebankingApp": {
+        "devise" : {
+            "home": {
+                "title": "Devises",
+                "createLabel": "Create a new Devise",
+                "createOrEditLabel": "Create or edit a Devise"
+            },
+            "created": "A new Devise is created with identifier {{ param }}",
+            "updated": "A Devise is updated with identifier {{ param }}",
+            "deleted": "A Devise is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Devise {{ id }}?"
+            },
+            "detail": {
+                "title": "Devise"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "achatBb": "Achat Bb",
+            "achatTc": "Achat Tc",
+            "achatTr": "Achat Tr",
+            "venteBb": "Vente Bb",
+            "venteTc": "Vente Tc",
+            "venteTr": "Vente Tr",
+            "dateMaj": "Date Maj",
+            "deleted": "Deleted"
+        }
+    }
+}

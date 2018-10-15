@@ -1,0 +1,81 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "devise",
+            "otherEntityName": "devise",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "compte",
+            "otherEntityName": "compte",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "facturier",
+            "otherEntityName": "facturier",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "statut",
+            "otherEntityName": "statut",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "numeroFacture",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "montant",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateFin",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateAcceptation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateDemande",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "estTelecharge",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181012110853",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "paiement_facture",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

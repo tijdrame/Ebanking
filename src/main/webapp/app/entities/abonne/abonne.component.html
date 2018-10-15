@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span jhiTranslate="ebankingApp.abonne.home.title">Abonnes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-abonne" [routerLink]="['/', { outlets: { popup: ['abonne-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ebankingApp.abonne.home.createLabel">
+            Create new Abonne
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="abonnes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="telephone"><span jhiTranslate="ebankingApp.abonne.telephone">Telephone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="agence.nom"><span jhiTranslate="ebankingApp.abonne.agence">Agence</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="gestionnaire.login"><span jhiTranslate="ebankingApp.abonne.gestionnaire">Gestionnaire</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.login"><span jhiTranslate="ebankingApp.abonne.user">User</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let abonne of abonnes ;trackBy: trackId">
+                <td>{{abonne.telephone}}</td>
+                <td>
+                    <div *ngIf="abonne.agence">
+                        <a [routerLink]="['../agence', abonne.agence?.id ]" >{{abonne.agence?.nom}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{abonne.gestionnaire?.login}}
+                </td>
+                <td>
+                    {{abonne.user?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../abonne', abonne.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'abonne/'+ abonne.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'abonne/'+ abonne.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="abonnes && abonnes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+
+{
+    "ebankingApp": {
+        "paiementFacture" : {
+            "home": {
+                "title": "Paiement Factures",
+                "createLabel": "Create a new Paiement Facture",
+                "createOrEditLabel": "Create or edit a Paiement Facture"
+            },
+            "created": "A new Paiement Facture is created with identifier {{ param }}",
+            "updated": "A Paiement Facture is updated with identifier {{ param }}",
+            "deleted": "A Paiement Facture is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Paiement Facture {{ id }}?"
+            },
+            "detail": {
+                "title": "Paiement Facture"
+            },
+            "numeroFacture": "Numero Facture",
+            "montant": "Montant",
+            "dateDebut": "Date Debut",
+            "dateFin": "Date Fin",
+            "dateAcceptation": "Date Acceptation",
+            "dateDemande": "Date Demande",
+            "estTelecharge": "Est Telecharge",
+            "deleted": "Deleted",
+            "devise": "Devise",
+            "compte": "Compte",
+            "facturier": "Facturier",
+            "statut": "Statut"
+        }
+    }
+}

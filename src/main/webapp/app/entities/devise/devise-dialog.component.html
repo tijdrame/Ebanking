@@ -1,0 +1,77 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myDeviseLabel" jhiTranslate="ebankingApp.devise.home.createOrEditLabel">Create or edit a Devise</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.libelle" for="field_libelle">Libelle</label>
+            <input type="text" class="form-control" name="libelle" id="field_libelle"
+                [(ngModel)]="devise.libelle" required/>
+            <div [hidden]="!(editForm.controls.libelle?.dirty && editForm.controls.libelle?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.libelle?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="devise.code" required/>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.achatBb" for="field_achatBb">Achat Bb</label>
+            <input type="number" class="form-control" name="achatBb" id="field_achatBb"
+                [(ngModel)]="devise.achatBb" required/>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.achatTc" for="field_achatTc">Achat Tc</label>
+            <input type="number" class="form-control" name="achatTc" id="field_achatTc"
+                [(ngModel)]="devise.achatTc" required />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.achatTr" for="field_achatTr">Achat Tr</label>
+            <input type="number" class="form-control" name="achatTr" id="field_achatTr"
+                [(ngModel)]="devise.achatTr" required />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.venteBb" for="field_venteBb">Vente Bb</label>
+            <input type="number" class="form-control" name="venteBb" id="field_venteBb"
+                [(ngModel)]="devise.venteBb" required/>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.venteTc" for="field_venteTc">Vente Tc</label>
+            <input type="number" class="form-control" name="venteTc" id="field_venteTc"
+                [(ngModel)]="devise.venteTc" required/>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.venteTr" for="field_venteTr">Vente Tr</label>
+            <input type="number" class="form-control" name="venteTr" id="field_venteTr"
+                [(ngModel)]="devise.venteTr" required/>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.devise.dateMaj" for="field_dateMaj">Date Maj</label>
+            <div class="input-group">
+                <input id="field_dateMaj" type="text" class="form-control" name="dateMaj" ngbDatepicker  #dateMajDp="ngbDatepicker" [(ngModel)]="devise.dateMaj"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateMajDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

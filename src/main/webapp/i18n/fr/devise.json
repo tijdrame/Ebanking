@@ -1,0 +1,31 @@
+
+{
+    "ebankingApp": {
+        "devise" : {
+            "home": {
+                "title": "Liste des Devises",
+                "createLabel": "Créer une Devise",
+                "createOrEditLabel": "Créer ou éditer une Devise"
+            },
+            "created": "Une nouvelle Devise a été créée avec l'identifiant {{ param }}",
+            "updated": "La Devise avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Devise avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Devise {{ id }} ?"
+            },
+            "detail": {
+                "title": "Devise"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "achatBb": "Achat Bb",
+            "achatTc": "Achat Tc",
+            "achatTr": "Achat Tr",
+            "venteBb": "Vente Bb",
+            "venteTc": "Vente Tc",
+            "venteTr": "Vente Tr",
+            "dateMaj": "Date Maj",
+            "deleted": "Deleted"
+        }
+    }
+}

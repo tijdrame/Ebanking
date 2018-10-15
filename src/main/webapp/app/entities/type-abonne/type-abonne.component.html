@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="ebankingApp.typeAbonne.home.title">Type Abonnes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-type-abonne" [routerLink]="['/', { outlets: { popup: ['type-abonne-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ebankingApp.typeAbonne.home.createLabel">
+            Create new Type Abonne
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="typeAbonnes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="libelle"><span jhiTranslate="ebankingApp.typeAbonne.libelle">Libelle</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="ebankingApp.typeAbonne.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let typeAbonne of typeAbonnes ;trackBy: trackId">
+                <td>{{typeAbonne.libelle}}</td>
+                <td>{{typeAbonne.code}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../type-abonne', typeAbonne.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'type-abonne/'+ typeAbonne.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'type-abonne/'+ typeAbonne.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="typeAbonnes && typeAbonnes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

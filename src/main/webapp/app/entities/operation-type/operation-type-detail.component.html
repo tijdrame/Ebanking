@@ -1,0 +1,34 @@
+
+<div *ngIf="operationType">
+    <h2><span jhiTranslate="ebankingApp.operationType.detail.title">Operation Type</span> {{operationType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.operationType.libelle">Libelle</span></dt>
+        <dd>
+            <span>{{operationType.libelle}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationType.code">Code</span></dt>
+        <dd>
+            <span>{{operationType.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationType.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{operationType.deleted}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'operation-type/'+ operationType.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

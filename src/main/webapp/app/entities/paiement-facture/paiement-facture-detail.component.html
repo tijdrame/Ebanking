@@ -1,0 +1,78 @@
+
+<div *ngIf="paiementFacture">
+    <h2><span jhiTranslate="ebankingApp.paiementFacture.detail.title">Paiement Facture</span> {{paiementFacture.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.numeroFacture">Numero Facture</span></dt>
+        <dd>
+            <span>{{paiementFacture.numeroFacture}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.montant">Montant</span></dt>
+        <dd>
+            <span>{{paiementFacture.montant}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.dateDebut">Date Debut</span></dt>
+        <dd>
+            <span>{{paiementFacture.dateDebut | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.dateFin">Date Fin</span></dt>
+        <dd>
+            <span>{{paiementFacture.dateFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.dateAcceptation">Date Acceptation</span></dt>
+        <dd>
+            <span>{{paiementFacture.dateAcceptation | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.dateDemande">Date Demande</span></dt>
+        <dd>
+            <span>{{paiementFacture.dateDemande | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.estTelecharge">Est Telecharge</span></dt>
+        <dd>
+            <span>{{paiementFacture.estTelecharge}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{paiementFacture.deleted}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.devise">Devise</span></dt>
+        <dd>
+            <div *ngIf="paiementFacture.devise">
+                <a [routerLink]="['/devise', paiementFacture.devise?.id]">{{paiementFacture.devise?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.compte">Compte</span></dt>
+        <dd>
+            <div *ngIf="paiementFacture.compte">
+                <a [routerLink]="['/compte', paiementFacture.compte?.id]">{{paiementFacture.compte?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.facturier">Facturier</span></dt>
+        <dd>
+            <div *ngIf="paiementFacture.facturier">
+                <a [routerLink]="['/facturier', paiementFacture.facturier?.id]">{{paiementFacture.facturier?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.paiementFacture.statut">Statut</span></dt>
+        <dd>
+            <div *ngIf="paiementFacture.statut">
+                <a [routerLink]="['/statut', paiementFacture.statut?.id]">{{paiementFacture.statut?.libelle}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'paiement-facture/'+ paiementFacture.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity OperationsVirement.
+    -->
+    <changeSet id="20181012120226-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="beneficiaire_id"
+                                 baseTableName="operations_virement"
+                                 constraintName="fk_operations_virement_beneficiaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="beneficiaire"/>
+
+        <addForeignKeyConstraint baseColumnNames="devise_id"
+                                 baseTableName="operations_virement"
+                                 constraintName="fk_operations_virement_devise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="devise"/>
+
+        <addForeignKeyConstraint baseColumnNames="statut_id"
+                                 baseTableName="operations_virement"
+                                 constraintName="fk_operations_virement_statut_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="statut"/>
+
+        <addForeignKeyConstraint baseColumnNames="operation_id"
+                                 baseTableName="operations_virement"
+                                 constraintName="fk_operations_virement_operation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="operation"/>
+
+    </changeSet>
+</databaseChangeLog>

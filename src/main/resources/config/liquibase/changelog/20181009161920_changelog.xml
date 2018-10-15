@@ -1,0 +1,20 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="MacintoshHD (generated)" id="1539101974173-1">
+        <createTable tableName="log_evenement">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="log_evenementPK"/>
+            </column>
+            <column name="adresse_ip" type="VARCHAR(255)"/>
+            <column name="adresse_mac" type="VARCHAR(255)"/>
+            <column name="code_objet" type="BIGINT"/>
+            <column name="date_created" type="BYTEA"/>
+            <column name="entity_name" type="VARCHAR(255)"/>
+            <column name="event_name" type="VARCHAR(255)"/>
+            <column name="user_created_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539101974173-2">
+        <addForeignKeyConstraint baseColumnNames="user_created_id" baseTableName="log_evenement" constraintName="FK4spcjaiott79sij9lg83xyilx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

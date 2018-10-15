@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span jhiTranslate="ebankingApp.beneficiaire.home.title">Beneficiaires</span>
+        <button class="btn btn-primary float-right jh-create-entity create-beneficiaire" [routerLink]="['/', { outlets: { popup: ['beneficiaire-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ebankingApp.beneficiaire.home.createLabel">
+            Create new Beneficiaire
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="beneficiaires">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="titulaire"><span jhiTranslate="ebankingApp.beneficiaire.titulaire">Titulaire</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numeroCompte"><span jhiTranslate="ebankingApp.beneficiaire.numeroCompte">Numero Compte</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateDemande"><span jhiTranslate="ebankingApp.beneficiaire.dateDemande">Date Demande</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateAcceptation"><span jhiTranslate="ebankingApp.beneficiaire.dateAcceptation">Date Acceptation</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="deleted"><span jhiTranslate="ebankingApp.beneficiaire.deleted">Deleted</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="abonne.id"><span jhiTranslate="ebankingApp.beneficiaire.abonne">Abonne</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="statut.libelle"><span jhiTranslate="ebankingApp.beneficiaire.statut">Statut</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="banquesPartenaires.libelle"><span jhiTranslate="ebankingApp.beneficiaire.banquesPartenaires">Banques Partenaires</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let beneficiaire of beneficiaires ;trackBy: trackId">
+                <td><a [routerLink]="['../beneficiaire', beneficiaire.id ]">{{beneficiaire.id}}</a></td>
+                <td>{{beneficiaire.titulaire}}</td>
+                <td>{{beneficiaire.numeroCompte}}</td>
+                <td>{{beneficiaire.dateDemande | date:'mediumDate'}}</td>
+                <td>{{beneficiaire.dateAcceptation | date:'mediumDate'}}</td>
+                <td>{{beneficiaire.deleted}}</td>
+                <td>
+                    <div *ngIf="beneficiaire.abonne">
+                        <a [routerLink]="['../abonne', beneficiaire.abonne?.id ]" >{{beneficiaire.abonne?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="beneficiaire.statut">
+                        <a [routerLink]="['../statut', beneficiaire.statut?.id ]" >{{beneficiaire.statut?.libelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="beneficiaire.banquesPartenaires">
+                        <a [routerLink]="['../banques-partenaires', beneficiaire.banquesPartenaires?.id ]" >{{beneficiaire.banquesPartenaires?.libelle}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../beneficiaire', beneficiaire.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'beneficiaire/'+ beneficiaire.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'beneficiaire/'+ beneficiaire.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="beneficiaires && beneficiaires.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="ebankingApp.operationsVirement.home.title">Operations Virements</span>
+        <button class="btn btn-primary float-right jh-create-entity create-operations-virement" [routerLink]="['/', { outlets: { popup: ['operations-virement-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ebankingApp.operationsVirement.home.createLabel">
+            Create new Operations Virement
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="operationsVirements">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="montant"><span jhiTranslate="ebankingApp.operationsVirement.montant">Montant</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="ebankingApp.operationsVirement.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="deleted"><span jhiTranslate="ebankingApp.operationsVirement.deleted">Deleted</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="beneficiaire.titulaire"><span jhiTranslate="ebankingApp.operationsVirement.beneficiaire">Beneficiaire</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="devise.libelle"><span jhiTranslate="ebankingApp.operationsVirement.devise">Devise</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="statut.libelle"><span jhiTranslate="ebankingApp.operationsVirement.statut">Statut</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="operation.id"><span jhiTranslate="ebankingApp.operationsVirement.operation">Operation</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let operationsVirement of operationsVirements ;trackBy: trackId">
+                <td><a [routerLink]="['../operations-virement', operationsVirement.id ]">{{operationsVirement.id}}</a></td>
+                <td>{{operationsVirement.montant}}</td>
+                <td>{{operationsVirement.code}}</td>
+                <td>{{operationsVirement.deleted}}</td>
+                <td>
+                    <div *ngIf="operationsVirement.beneficiaire">
+                        <a [routerLink]="['../beneficiaire', operationsVirement.beneficiaire?.id ]" >{{operationsVirement.beneficiaire?.titulaire}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="operationsVirement.devise">
+                        <a [routerLink]="['../devise', operationsVirement.devise?.id ]" >{{operationsVirement.devise?.libelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="operationsVirement.statut">
+                        <a [routerLink]="['../statut', operationsVirement.statut?.id ]" >{{operationsVirement.statut?.libelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="operationsVirement.operation">
+                        <a [routerLink]="['../operation', operationsVirement.operation?.id ]" >{{operationsVirement.operation?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../operations-virement', operationsVirement.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'operations-virement/'+ operationsVirement.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'operations-virement/'+ operationsVirement.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="operationsVirements && operationsVirements.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

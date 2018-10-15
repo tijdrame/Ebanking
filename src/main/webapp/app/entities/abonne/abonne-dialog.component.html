@@ -1,0 +1,191 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="register()" #editForm="ngForm" >
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAbonneLabel" jhiTranslate="ebankingApp.abonne.home.createOrEditLabel">Create or edit a Abonne</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" jhiTranslate="userManagement.login">Login</label>
+            <input type="text" class="form-control" name="login" #loginInput="ngModel"
+                   [(ngModel)]="registerAccount.login" required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+
+            <div *ngIf="loginInput.dirty && loginInput.invalid">
+                <small class="form-text text-danger"
+                       *ngIf="loginInput.errors.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+
+                <small class="form-text text-danger"
+                       *ngIf="loginInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                       translateValues="{max: 50}">
+                    This field cannot be longer than 50 characters.
+                </small>
+
+                <small class="form-text text-danger"
+                       *ngIf="loginInput.errors.pattern" jhiTranslate="entity.validation.patternLogin">
+                    This field can only contain letters, digits and e-mail addresses.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" jhiTranslate="userManagement.firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" #firstNameInput="ngModel" required
+                   [(ngModel)]="registerAccount.firstName" maxlength="50">
+
+            <div *ngIf="firstNameInput.dirty && firstNameInput.invalid">
+                <small class="form-text text-danger"
+                       *ngIf="firstNameInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                       translateValues="{max: 50}">
+                    This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label jhiTranslate="userManagement.lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" #lastNameInput="ngModel" required
+                   [(ngModel)]="registerAccount.lastName" maxlength="50">
+
+            <div *ngIf="lastNameInput.dirty && lastNameInput.invalid">
+                <small class="form-text text-danger"
+                       *ngIf="lastNameInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                       translateValues="{max: 50}">
+                    This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" jhiTranslate="userManagement.email">Email</label>
+            <input type="email" class="form-control" name="email" #emailInput="ngModel"
+                   [(ngModel)]="registerAccount.email" minlength="5" required maxlength="100" email>
+
+            <div *ngIf="emailInput.dirty && emailInput.invalid">
+                <small class="form-text text-danger"
+                       *ngIf="emailInput.errors.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+
+                <small class="form-text text-danger"
+                       *ngIf="emailInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                       translateValues="{max: 100}">
+                    This field cannot be longer than 100 characters.
+                </small>
+
+                <small class="form-text text-danger"
+                       *ngIf="emailInput.errors.minlength" jhiTranslate="entity.validation.minlength"
+                       translateValues="{min: 5}">
+                    This field is required to be at least 5 characters.
+                </small>
+
+                <small class="form-text text-danger"
+                       *ngIf="emailInput.errors.email" jhiTranslate="global.messages.validate.email.invalid">
+                    Your email is invalid.
+                </small>
+            </div>
+        </div>
+
+
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" jhiTranslate="ebankingApp.abonne.telephone" for="field_telephone">Telephone</label>
+            <input type="number" class="form-control" name="telephone" id="field_telephone" required
+                [(ngModel)]="registerAccount.telephone" />
+        </div>
+
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" jhiTranslate="ebankingApp.abonne.agence" for="field_agence">Agence</label>
+            <select class="form-control" id="field_agence" name="agence" [(ngModel)]="registerAccount.agence" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="agenceOption.id === registerAccount.agence?.id ? registerAccount.agence : agenceOption" *ngFor="let agenceOption of agences; trackBy: trackAgenceById">{{agenceOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" jhiTranslate="ebankingApp.abonne.gestionnaire" for="field_gestionnaire">Gestionnaire</label>
+            <select class="form-control" id="field_gestionnaire" name="gestionnaire" [(ngModel)]="registerAccount.gestionnaire" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === registerAccount.gestionnaire?.id ? registerAccount.gestionnaire : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" for="password" jhiTranslate="global.form.newpassword">New password</label>
+            <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
+                   [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
+            <div *ngIf="password.dirty && password.invalid">
+                <small class="form-text text-danger" *ngIf="password.errors.required"
+                       jhiTranslate="global.messages.validate.newpassword.required">
+                    Your password is required.
+                </small>
+                <small class="form-text text-danger" *ngIf="password.errors.minlength"
+                       jhiTranslate="global.messages.validate.newpassword.minlength">
+                    Your password is required to be at least 4 characters.
+                </small>
+                <small class="form-text text-danger" *ngIf="password.errors.maxlength"
+                       jhiTranslate="global.messages.validate.newpassword.maxlength">
+                    Your password cannot be longer than 50 characters.
+                </small>
+            </div>
+            <jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar>
+        </div>
+        <div class="form-group" *ngIf="!abonne.id>0">
+            <label class="form-control-label" for="confirmPassword" jhiTranslate="global.form.confirmpassword">New password confirmation</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
+                   [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
+            <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
+                <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
+                       jhiTranslate="global.messages.validate.confirmpassword.required">
+                    Your confirmation password is required.
+                </small>
+                <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.minlength"
+                       jhiTranslate="global.messages.validate.confirmpassword.minlength">
+                    Your confirmation password is required to be at least 4 characters.
+                </small>
+                <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.maxlength"
+                       jhiTranslate="global.messages.validate.confirmpassword.maxlength">
+                    Your confirmation password cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.abonne.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="abonne.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === abonne.user?.id ? abonne.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>-->
+
+
+        <div class="form-group" *ngIf="abonne.id>0">
+            <label class="form-control-label" jhiTranslate="ebankingApp.abonne.telephone" for="field_telephone2">Telephone</label>
+            <input type="number" class="form-control" name="telephone" id="field_telephone2"
+                   [(ngModel)]="abonne.telephone" />
+        </div>
+
+        <div class="form-group" *ngIf="abonne?.id>0">
+            <label class="form-control-label" jhiTranslate="ebankingApp.abonne.agence" for="field_agence2">Agence</label>
+            <select class="form-control" id="field_agence2" name="agence" [(ngModel)]="abonne.agence" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="agenceOption.id === abonne.agence?.id ? abonne.agence : agenceOption" *ngFor="let agenceOption of agences; trackBy: trackAgenceById">{{agenceOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="abonne?.id>0">
+            <label class="form-control-label" jhiTranslate="ebankingApp.abonne.gestionnaire" for="field_gestionnaire2">Gestionnaire</label>
+            <select class="form-control" id="field_gestionnaire2" name="gestionnaire" [(ngModel)]="abonne.gestionnaire" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === abonne.gestionnaire?.id ? abonne.gestionnaire : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+    </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

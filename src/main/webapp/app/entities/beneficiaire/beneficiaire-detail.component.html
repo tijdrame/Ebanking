@@ -1,0 +1,60 @@
+
+<div *ngIf="beneficiaire">
+    <h2><span jhiTranslate="ebankingApp.beneficiaire.detail.title">Beneficiaire</span> {{beneficiaire.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.titulaire">Titulaire</span></dt>
+        <dd>
+            <span>{{beneficiaire.titulaire}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.numeroCompte">Numero Compte</span></dt>
+        <dd>
+            <span>{{beneficiaire.numeroCompte}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.dateDemande">Date Demande</span></dt>
+        <dd>
+            <span>{{beneficiaire.dateDemande | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.dateAcceptation">Date Acceptation</span></dt>
+        <dd>
+            <span>{{beneficiaire.dateAcceptation | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{beneficiaire.deleted}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.abonne">Abonne</span></dt>
+        <dd>
+            <div *ngIf="beneficiaire.abonne">
+                <a [routerLink]="['/abonne', beneficiaire.abonne?.id]">{{beneficiaire.abonne?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.statut">Statut</span></dt>
+        <dd>
+            <div *ngIf="beneficiaire.statut">
+                <a [routerLink]="['/statut', beneficiaire.statut?.id]">{{beneficiaire.statut?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.beneficiaire.banquesPartenaires">Banques Partenaires</span></dt>
+        <dd>
+            <div *ngIf="beneficiaire.banquesPartenaires">
+                <a [routerLink]="['/banques-partenaires', beneficiaire.banquesPartenaires?.id]">{{beneficiaire.banquesPartenaires?.libelle}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'beneficiaire/'+ beneficiaire.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

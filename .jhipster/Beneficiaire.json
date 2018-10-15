@@ -1,0 +1,57 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "abonne",
+            "otherEntityName": "abonne",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "statut",
+            "otherEntityName": "statut",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "banquesPartenaires",
+            "otherEntityName": "banquesPartenaires",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "titulaire",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numeroCompte",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateDemande",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateAcceptation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181012113907",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "beneficiaire",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

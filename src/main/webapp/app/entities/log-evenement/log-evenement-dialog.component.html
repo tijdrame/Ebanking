@@ -1,0 +1,64 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLogEvenementLabel" jhiTranslate="ebankingApp.logEvenement.home.createOrEditLabel">Create or edit a Log Evenement</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!logEvenement.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="logEvenement.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.logEvenement.codeObjet" for="field_codeObjet">Code Objet</label>
+            <input type="number" class="form-control" name="codeObjet" id="field_codeObjet"
+                [(ngModel)]="logEvenement.codeObjet" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.logEvenement.entityName" for="field_entityName">Entity Name</label>
+            <input type="text" class="form-control" name="entityName" id="field_entityName"
+                [(ngModel)]="logEvenement.entityName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.logEvenement.eventName" for="field_eventName">Event Name</label>
+            <input type="text" class="form-control" name="eventName" id="field_eventName"
+                [(ngModel)]="logEvenement.eventName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.logEvenement.adresseMac" for="field_adresseMac">Adresse Mac</label>
+            <input type="text" class="form-control" name="adresseMac" id="field_adresseMac"
+                [(ngModel)]="logEvenement.adresseMac" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.logEvenement.adresseIP" for="field_adresseIP">Adresse IP</label>
+            <input type="text" class="form-control" name="adresseIP" id="field_adresseIP"
+                [(ngModel)]="logEvenement.adresseIP" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.logEvenement.dateCreated" for="field_dateCreated">Date Created</label>
+            <div class="d-flex">
+                <input id="field_dateCreated" type="datetime-local" class="form-control" name="dateCreated" [(ngModel)]="logEvenement.dateCreated"
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.logEvenement.userCreated" for="field_userCreated">User Created</label>
+            <select class="form-control" id="field_userCreated" name="userCreated" [(ngModel)]="logEvenement.userCreated" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === logEvenement.userCreated?.id ? logEvenement.userCreated : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

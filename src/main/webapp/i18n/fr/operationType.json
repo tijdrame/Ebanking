@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "operationType" : {
+            "home": {
+                "title": "Liste des types d'Opération",
+                "createLabel": "Créer un Type d'Operation",
+                "createOrEditLabel": "Créer ou éditer un Type Operation "
+            },
+            "created": "Un nouveau Type Operation  a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Operation avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Operation avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Operation {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type Operation"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+
+<div *ngIf="facturier">
+    <h2><span jhiTranslate="ebankingApp.facturier.detail.title">Facturier</span> {{facturier.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.facturier.libelle">Libelle</span></dt>
+        <dd>
+            <span>{{facturier.libelle}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.facturier.code">Code</span></dt>
+        <dd>
+            <span>{{facturier.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.facturier.numeroCompte">Numero Compte</span></dt>
+        <dd>
+            <span>{{facturier.numeroCompte}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.facturier.deleted2">Deleted</span></dt>
+        <dd>
+            <span>{{facturier.deleted}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'facturier/'+ facturier.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

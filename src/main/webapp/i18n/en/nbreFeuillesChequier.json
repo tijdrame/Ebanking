@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "nbreFeuillesChequier" : {
+            "home": {
+                "title": "Nbre Feuilles Chequiers",
+                "createLabel": "Create a new Nbre Feuilles Chequier",
+                "createOrEditLabel": "Create or edit a Nbre Feuilles Chequier"
+            },
+            "created": "A new Nbre Feuilles Chequier is created with identifier {{ param }}",
+            "updated": "A Nbre Feuilles Chequier is updated with identifier {{ param }}",
+            "deleted": "A Nbre Feuilles Chequier is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Nbre Feuilles Chequier {{ id }}?"
+            },
+            "detail": {
+                "title": "Nbre Feuilles Chequier"
+            },
+            "nbFeuilles": "Nb Feuilles",
+            "libelle": "Libelle",
+            "deleted": "Deleted"
+        }
+    }
+}

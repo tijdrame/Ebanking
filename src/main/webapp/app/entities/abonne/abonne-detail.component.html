@@ -1,0 +1,40 @@
+
+<div *ngIf="abonne">
+    <h2><span jhiTranslate="ebankingApp.abonne.detail.title">Abonne</span> {{abonne.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.abonne.telephone">Telephone</span></dt>
+        <dd>
+            <span>{{abonne.telephone}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.abonne.agence">Agence</span></dt>
+        <dd>
+            <div *ngIf="abonne.agence">
+                <a [routerLink]="['/agence', abonne.agence?.id]">{{abonne.agence?.nom}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.abonne.gestionnaire">Gestionnaire</span></dt>
+        <dd>
+            {{abonne.gestionnaire?.login}}
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.abonne.user">User</span></dt>
+        <dd>
+            {{abonne.user?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'abonne/'+ abonne.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

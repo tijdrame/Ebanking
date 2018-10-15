@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "typeOpposition" : {
+            "home": {
+                "title": "Type Oppositions",
+                "createLabel": "Create a new Type Opposition",
+                "createOrEditLabel": "Create or edit a Type Opposition"
+            },
+            "created": "A new Type Opposition is created with identifier {{ param }}",
+            "updated": "A Type Opposition is updated with identifier {{ param }}",
+            "deleted": "A Type Opposition is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Opposition {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Opposition"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

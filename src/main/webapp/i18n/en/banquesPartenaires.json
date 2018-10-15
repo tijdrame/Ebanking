@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "banquesPartenaires" : {
+            "home": {
+                "title": "Banques Partenaires",
+                "createLabel": "Create a new Banques Partenaires",
+                "createOrEditLabel": "Create or edit a Banques Partenaires"
+            },
+            "created": "A new Banques Partenaires is created with identifier {{ param }}",
+            "updated": "A Banques Partenaires is updated with identifier {{ param }}",
+            "deleted": "A Banques Partenaires is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Banques Partenaires {{ id }}?"
+            },
+            "detail": {
+                "title": "Banques Partenaires"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

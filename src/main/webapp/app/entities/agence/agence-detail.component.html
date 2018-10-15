@@ -1,0 +1,54 @@
+
+<div *ngIf="agence">
+    <h2><span jhiTranslate="ebankingApp.agence.detail.title">Agence</span> {{agence.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.agence.nom">Nom</span></dt>
+        <dd>
+            <span>{{agence.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.agence.email">Email</span></dt>
+        <dd>
+            <span>{{agence.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.agence.telephone">Telephone</span></dt>
+        <dd>
+            <span>{{agence.telephone}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.agence.adresse">Adresse</span></dt>
+        <dd>
+            <span>{{agence.adresse}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.agence.longitude">Longitude</span></dt>
+        <dd>
+            <span>{{agence.longitude}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.agence.latitude">Latitude</span></dt>
+        <dd>
+            <span>{{agence.latitude}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.agence.etatGab">Etat Gab</span></dt>
+        <dd>
+            <span>{{agence.etatGab}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.agence.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{agence.deleted}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'agence/'+ agence.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

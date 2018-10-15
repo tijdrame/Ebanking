@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nbFeuilles",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181004103409",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "nbre_feuilles_chequier",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

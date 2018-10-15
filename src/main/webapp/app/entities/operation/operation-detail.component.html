@@ -1,0 +1,64 @@
+
+<div *ngIf="operation">
+    <h2><span jhiTranslate="ebankingApp.operation.detail.title">Operation</span> {{operation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.operation.dateOperation">Date Operation</span></dt>
+        <dd>
+            <span>{{operation.dateOperation | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.dateAcceptation">Date Acceptation</span></dt>
+        <dd>
+            <span>{{operation.dateAcceptation | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.dateExecution">Date Execution</span></dt>
+        <dd>
+            <span>{{operation.dateExecution | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.motif">Motif</span></dt>
+        <dd>
+            <span>{{operation.motif}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.numeroTransaction">Numero Transaction</span></dt>
+        <dd>
+            <span>{{operation.numeroTransaction}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{operation.deleted}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.operationType">Operation Type</span></dt>
+        <dd>
+            <div *ngIf="operation.operationType">
+                <a [routerLink]="['/operation-type', operation.operationType?.id]">{{operation.operationType?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.priseEnCharge">Prise En Charge</span></dt>
+        <dd>
+            <div *ngIf="operation.priseEnCharge">
+                <a [routerLink]="['/prise-en-charge', operation.priseEnCharge?.id]">{{operation.priseEnCharge?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operation.compte">Compte</span></dt>
+        <dd>
+            <div *ngIf="operation.compte">
+                <a [routerLink]="['/compte', operation.compte?.id]">{{operation.compte?.numero}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'operation/'+ operation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

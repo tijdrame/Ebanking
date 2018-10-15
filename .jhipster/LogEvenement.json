@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "userCreated",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "logEvenement"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "codeObjet",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "entityName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "eventName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresseMac",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresseIP",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20181009104217",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "log_evenement",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,62 @@
+
+<div *ngIf="devise">
+    <h2><span jhiTranslate="ebankingApp.devise.detail.title">Devise</span> {{devise.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.devise.libelle">Libelle</span></dt>
+        <dd>
+            <span>{{devise.libelle}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.code">Code</span></dt>
+        <dd>
+            <span>{{devise.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.achatBb">Achat Bb</span></dt>
+        <dd>
+            <span>{{devise.achatBb}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.achatTc">Achat Tc</span></dt>
+        <dd>
+            <span>{{devise.achatTc}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.achatTr">Achat Tr</span></dt>
+        <dd>
+            <span>{{devise.achatTr}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.venteBb">Vente Bb</span></dt>
+        <dd>
+            <span>{{devise.venteBb}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.venteTc">Vente Tc</span></dt>
+        <dd>
+            <span>{{devise.venteTc}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.venteTr">Vente Tr</span></dt>
+        <dd>
+            <span>{{devise.venteTr}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.dateMaj">Date Maj</span></dt>
+        <dd>
+            <span>{{devise.dateMaj | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.devise.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{devise.deleted}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'devise/'+ devise.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

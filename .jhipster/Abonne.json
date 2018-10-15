@@ -1,0 +1,79 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "agence",
+            "otherEntityName": "agence",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipName": "gestionnaire",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "abonne"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "abonne"
+        },
+        {
+            "relationshipName": "userCreated",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "abonne"
+        },
+        {
+            "relationshipName": "userUpdated",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "abonne"
+        },
+        {
+            "relationshipName": "userDeleted",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "abonne"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "telephone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateDeleted",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateUpdated",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20181004114653",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "abonne",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

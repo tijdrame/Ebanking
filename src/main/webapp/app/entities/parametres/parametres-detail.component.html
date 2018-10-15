@@ -1,0 +1,34 @@
+
+<div *ngIf="parametres">
+    <h2><span jhiTranslate="ebankingApp.parametres.detail.title">Parametres</span> {{parametres.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.parametres.cle">Cle</span></dt>
+        <dd>
+            <span>{{parametres.cle}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.parametres.valeur">Valeur</span></dt>
+        <dd>
+            <span>{{parametres.valeur}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.parametres.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{parametres.deleted}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'parametres/'+ parametres.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

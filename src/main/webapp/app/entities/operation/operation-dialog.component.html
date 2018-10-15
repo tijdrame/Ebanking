@@ -1,0 +1,103 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOperationLabel" jhiTranslate="ebankingApp.operation.home.createOrEditLabel">Create or edit a Operation</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!operation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="operation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.dateOperation" for="field_dateOperation">Date Operation</label>
+            <div class="input-group">
+                <input id="field_dateOperation" type="text" class="form-control" name="dateOperation" ngbDatepicker  #dateOperationDp="ngbDatepicker" [(ngModel)]="operation.dateOperation"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateOperationDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.dateAcceptation" for="field_dateAcceptation">Date Acceptation</label>
+            <div class="input-group">
+                <input id="field_dateAcceptation" type="text" class="form-control" name="dateAcceptation" ngbDatepicker  #dateAcceptationDp="ngbDatepicker" [(ngModel)]="operation.dateAcceptation"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateAcceptationDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.dateExecution" for="field_dateExecution">Date Execution</label>
+            <div class="input-group">
+                <input id="field_dateExecution" type="text" class="form-control" name="dateExecution" ngbDatepicker  #dateExecutionDp="ngbDatepicker" [(ngModel)]="operation.dateExecution"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateExecutionDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.motif" for="field_motif">Motif</label>
+            <input type="text" class="form-control" name="motif" id="field_motif"
+                [(ngModel)]="operation.motif" required/>
+            <div [hidden]="!(editForm.controls.motif?.dirty && editForm.controls.motif?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.motif?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.numeroTransaction" for="field_numeroTransaction">Numero Transaction</label>
+            <input type="text" class="form-control" name="numeroTransaction" id="field_numeroTransaction"
+                [(ngModel)]="operation.numeroTransaction" required/>
+            <div [hidden]="!(editForm.controls.numeroTransaction?.dirty && editForm.controls.numeroTransaction?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numeroTransaction?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.deleted" for="field_deleted">Deleted</label>
+            <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                [(ngModel)]="operation.deleted" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.operationType" for="field_operationType">Operation Type</label>
+            <select class="form-control" id="field_operationType" name="operationType" [(ngModel)]="operation.operationType" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="operationTypeOption.id === operation.operationType?.id ? operation.operationType : operationTypeOption" *ngFor="let operationTypeOption of operationtypes; trackBy: trackOperationTypeById">{{operationTypeOption.libelle}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.priseEnCharge" for="field_priseEnCharge">Prise En Charge</label>
+            <select class="form-control" id="field_priseEnCharge" name="priseEnCharge" [(ngModel)]="operation.priseEnCharge" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="priseEnChargeOption.id === operation.priseEnCharge?.id ? operation.priseEnCharge : priseEnChargeOption" *ngFor="let priseEnChargeOption of priseencharges; trackBy: trackPriseEnChargeById">{{priseEnChargeOption.libelle}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.operation.compte" for="field_compte">Compte</label>
+            <select class="form-control" id="field_compte" name="compte" [(ngModel)]="operation.compte" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="compteOption.id === operation.compte?.id ? operation.compte : compteOption" *ngFor="let compteOption of comptes; trackBy: trackCompteById">{{compteOption.numero}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

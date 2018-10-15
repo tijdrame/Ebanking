@@ -1,0 +1,57 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAgenceLabel" jhiTranslate="ebankingApp.agence.home.createOrEditLabel">Create or edit a Agence</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.agence.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="agence.nom" required/>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.agence.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="agence.email" required />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.agence.telephone" for="field_telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" id="field_telephone"
+                [(ngModel)]="agence.telephone" required/>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.agence.adresse" for="field_adresse">Adresse</label>
+            <input type="text" class="form-control" name="adresse" id="field_adresse"
+                [(ngModel)]="agence.adresse" required />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.agence.longitude" for="field_longitude">Longitude</label>
+            <input type="number" class="form-control" name="longitude" id="field_longitude"
+                [(ngModel)]="agence.longitude" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.agence.latitude" for="field_latitude">Latitude</label>
+            <input type="number" class="form-control" name="latitude" id="field_latitude"
+                [(ngModel)]="agence.latitude" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.agence.etatGab" for="field_etatGab">Etat Gab</label>
+            <input type="checkbox" class="form-control" name="etatGab" id="field_etatGab"
+                [(ngModel)]="agence.etatGab" />
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181004102754",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "prise_en_charge",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

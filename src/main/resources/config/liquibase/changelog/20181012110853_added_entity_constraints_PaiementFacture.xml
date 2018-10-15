@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity PaiementFacture.
+    -->
+    <changeSet id="20181012110853-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="devise_id"
+                                 baseTableName="paiement_facture"
+                                 constraintName="fk_paiement_facture_devise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="devise"/>
+
+        <addForeignKeyConstraint baseColumnNames="compte_id"
+                                 baseTableName="paiement_facture"
+                                 constraintName="fk_paiement_facture_compte_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compte"/>
+
+        <addForeignKeyConstraint baseColumnNames="facturier_id"
+                                 baseTableName="paiement_facture"
+                                 constraintName="fk_paiement_facture_facturier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="facturier"/>
+
+        <addForeignKeyConstraint baseColumnNames="statut_id"
+                                 baseTableName="paiement_facture"
+                                 constraintName="fk_paiement_facture_statut_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="statut"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,67 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "abonne",
+            "otherEntityName": "abonne",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "telephone"
+        },
+        {
+            "relationshipName": "devise",
+            "otherEntityName": "devise",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "typeCompte",
+            "otherEntityName": "typeCompte",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "numero",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numeroComplet",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "solde",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "sens",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20181011122529",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "compte",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

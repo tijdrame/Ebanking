@@ -1,0 +1,28 @@
+
+{
+    "ebankingApp": {
+        "logEvenement" : {
+            "home": {
+                "title": "LogEvenements",
+                "createLabel": "Créer un nouveau Log Evenement",
+                "createOrEditLabel": "Créer ou éditer un Log Evenement"
+            },
+            "created": "Un nouveau Log Evenement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Log Evenement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Log Evenement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Log Evenement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Log Evenement"
+            },
+            "codeObjet": "Code Objet",
+            "entityName": "Entity Name",
+            "eventName": "Event Name",
+            "adresseMac": "Adresse Mac",
+            "adresseIP": "Adresse IP",
+            "dateCreated": "Date Created",
+            "userCreated": "User Created"
+        }
+    }
+}

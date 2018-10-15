@@ -1,0 +1,28 @@
+
+{
+    "ebankingApp": {
+        "operationsVirement" : {
+            "home": {
+                "title": "Operations Virements",
+                "createLabel": "Create a new Operations Virement",
+                "createOrEditLabel": "Create or edit a Operations Virement"
+            },
+            "created": "A new Operations Virement is created with identifier {{ param }}",
+            "updated": "A Operations Virement is updated with identifier {{ param }}",
+            "deleted": "A Operations Virement is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Operations Virement {{ id }}?"
+            },
+            "detail": {
+                "title": "Operations Virement"
+            },
+            "montant": "Montant",
+            "code": "Code",
+            "deleted": "Deleted",
+            "beneficiaire": "Beneficiaire",
+            "devise": "Devise",
+            "statut": "Statut",
+            "operation": "Operation"
+        }
+    }
+}

@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBeneficiaireLabel" jhiTranslate="ebankingApp.beneficiaire.home.createOrEditLabel">Create or edit a Beneficiaire</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!beneficiaire.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="beneficiaire.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.titulaire" for="field_titulaire">Titulaire</label>
+            <input type="text" class="form-control" name="titulaire" id="field_titulaire"
+                [(ngModel)]="beneficiaire.titulaire" required/>
+            <div [hidden]="!(editForm.controls.titulaire?.dirty && editForm.controls.titulaire?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.titulaire?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.numeroCompte" for="field_numeroCompte">Numero Compte</label>
+            <input type="text" class="form-control" name="numeroCompte" id="field_numeroCompte"
+                [(ngModel)]="beneficiaire.numeroCompte" required/>
+            <div [hidden]="!(editForm.controls.numeroCompte?.dirty && editForm.controls.numeroCompte?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numeroCompte?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.dateDemande" for="field_dateDemande">Date Demande</label>
+            <div class="input-group">
+                <input id="field_dateDemande" type="text" class="form-control" name="dateDemande" ngbDatepicker  #dateDemandeDp="ngbDatepicker" [(ngModel)]="beneficiaire.dateDemande"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateDemandeDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.dateAcceptation" for="field_dateAcceptation">Date Acceptation</label>
+            <div class="input-group">
+                <input id="field_dateAcceptation" type="text" class="form-control" name="dateAcceptation" ngbDatepicker  #dateAcceptationDp="ngbDatepicker" [(ngModel)]="beneficiaire.dateAcceptation"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateAcceptationDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.deleted" for="field_deleted">Deleted</label>
+            <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                [(ngModel)]="beneficiaire.deleted" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.abonne" for="field_abonne">Abonne</label>
+            <select class="form-control" id="field_abonne" name="abonne" [(ngModel)]="beneficiaire.abonne" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="abonneOption.id === beneficiaire.abonne?.id ? beneficiaire.abonne : abonneOption" *ngFor="let abonneOption of abonnes; trackBy: trackAbonneById">{{abonneOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.statut" for="field_statut">Statut</label>
+            <select class="form-control" id="field_statut" name="statut" [(ngModel)]="beneficiaire.statut" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="statutOption.id === beneficiaire.statut?.id ? beneficiaire.statut : statutOption" *ngFor="let statutOption of statuts; trackBy: trackStatutById">{{statutOption.libelle}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.beneficiaire.banquesPartenaires" for="field_banquesPartenaires">Banques Partenaires</label>
+            <select class="form-control" id="field_banquesPartenaires" name="banquesPartenaires" [(ngModel)]="beneficiaire.banquesPartenaires" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="banquesPartenairesOption.id === beneficiaire.banquesPartenaires?.id ? beneficiaire.banquesPartenaires : banquesPartenairesOption" *ngFor="let banquesPartenairesOption of banquespartenaires; trackBy: trackBanquesPartenairesById">{{banquesPartenairesOption.libelle}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

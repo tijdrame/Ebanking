@@ -1,0 +1,50 @@
+
+<div *ngIf="logEvenement">
+    <h2><span jhiTranslate="ebankingApp.logEvenement.detail.title">Log Evenement</span> {{logEvenement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.logEvenement.codeObjet">Code Objet</span></dt>
+        <dd>
+            <span>{{logEvenement.codeObjet}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.logEvenement.entityName">Entity Name</span></dt>
+        <dd>
+            <span>{{logEvenement.entityName}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.logEvenement.eventName">Event Name</span></dt>
+        <dd>
+            <span>{{logEvenement.eventName}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.logEvenement.adresseMac">Adresse Mac</span></dt>
+        <dd>
+            <span>{{logEvenement.adresseMac}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.logEvenement.adresseIP">Adresse IP</span></dt>
+        <dd>
+            <span>{{logEvenement.adresseIP}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.logEvenement.dateCreated">Date Created</span></dt>
+        <dd>
+            <span>{{logEvenement.dateCreated | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.logEvenement.userCreated">User Created</span></dt>
+        <dd>
+            {{logEvenement.userCreated?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'log-evenement/'+ logEvenement.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

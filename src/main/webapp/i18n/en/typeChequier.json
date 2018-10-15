@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "typeChequier" : {
+            "home": {
+                "title": "Type Chequiers",
+                "createLabel": "Create a new Type Chequier",
+                "createOrEditLabel": "Create or edit a Type Chequier"
+            },
+            "created": "A new Type Chequier is created with identifier {{ param }}",
+            "updated": "A Type Chequier is updated with identifier {{ param }}",
+            "deleted": "A Type Chequier is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Chequier {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Chequier"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="ebankingApp.devise.home.title">Devises</span>
+        <button class="btn btn-primary float-right jh-create-entity create-devise" [routerLink]="['/', { outlets: { popup: ['devise-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ebankingApp.devise.home.createLabel">
+            Create new Devise
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="devises">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="libelle"><span jhiTranslate="ebankingApp.devise.libelle">Libelle</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="ebankingApp.devise.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="achatBb"><span jhiTranslate="ebankingApp.devise.achatBb">Achat Bb</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="achatTc"><span jhiTranslate="ebankingApp.devise.achatTc">Achat Tc</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="achatTr"><span jhiTranslate="ebankingApp.devise.achatTr">Achat Tr</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="venteBb"><span jhiTranslate="ebankingApp.devise.venteBb">Vente Bb</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="venteTc"><span jhiTranslate="ebankingApp.devise.venteTc">Vente Tc</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="venteTr"><span jhiTranslate="ebankingApp.devise.venteTr">Vente Tr</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateMaj"><span jhiTranslate="ebankingApp.devise.dateMaj">Date Maj</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let devise of devises ;trackBy: trackId">
+                <td>{{devise.libelle}}</td>
+                <td>{{devise.code}}</td>
+                <td>{{devise.achatBb}}</td>
+                <td>{{devise.achatTc}}</td>
+                <td>{{devise.achatTr}}</td>
+                <td>{{devise.venteBb}}</td>
+                <td>{{devise.venteTc}}</td>
+                <td>{{devise.venteTr}}</td>
+                <td>{{devise.dateMaj | date:"dd/MM/yyyy"}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../devise', devise.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'devise/'+ devise.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'devise/'+ devise.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="devises && devises.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

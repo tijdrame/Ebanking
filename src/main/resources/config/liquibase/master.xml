@@ -1,0 +1,129 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-1">
+        <createTable tableName="beneficiaire">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="beneficiairePK"/>
+            </column>
+            <column name="date_acceptation" type="date"/>
+            <column name="date_demande" type="date"/>
+            <column name="deleted" type="BOOLEAN"/>
+            <column name="numero_compte" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="titulaire" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="abonne_user_id" type="BIGINT"/>
+            <column name="banques_partenaires_id" type="BIGINT"/>
+            <column name="statut_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-2">
+        <createTable tableName="operation">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="operationPK"/>
+            </column>
+            <column name="date_acceptation" type="date"/>
+            <column name="date_execution" type="date"/>
+            <column name="date_operation" type="date"/>
+            <column name="deleted" type="BOOLEAN"/>
+            <column name="motif" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_transaction" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="compte_id" type="BIGINT"/>
+            <column name="operation_type_id" type="BIGINT"/>
+            <column name="prise_en_charge_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-3">
+        <createTable tableName="operations_virement">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="operations_virementPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="BOOLEAN"/>
+            <column name="montant" type="FLOAT8">
+                <constraints nullable="false"/>
+            </column>
+            <column name="beneficiaire_id" type="BIGINT"/>
+            <column name="devise_id" type="BIGINT"/>
+            <column name="operation_id" type="BIGINT"/>
+            <column name="statut_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-4">
+        <createTable tableName="paiement_facture">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="paiement_facturePK"/>
+            </column>
+            <column name="date_acceptation" type="date"/>
+            <column name="date_debut" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_demande" type="date"/>
+            <column name="date_fin" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="BOOLEAN"/>
+            <column name="est_telecharge" type="BOOLEAN"/>
+            <column name="montant" type="FLOAT8">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_facture" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="compte_id" type="BIGINT"/>
+            <column name="devise_id" type="BIGINT"/>
+            <column name="facturier_id" type="BIGINT"/>
+            <column name="statut_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-5">
+        <addForeignKeyConstraint baseColumnNames="beneficiaire_id" baseTableName="operations_virement" constraintName="FK30tpmj526yl86nfrely7r7vif" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="beneficiaire"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-6">
+        <addForeignKeyConstraint baseColumnNames="compte_id" baseTableName="operation" constraintName="FKa0ct8me4s6e469ipqb4tkdomh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="compte"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-7">
+        <addForeignKeyConstraint baseColumnNames="statut_id" baseTableName="operations_virement" constraintName="FKavh0r4qllwdt4xuyvtwn3idkw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="statut"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-8">
+        <addForeignKeyConstraint baseColumnNames="operation_type_id" baseTableName="operation" constraintName="FKbyh0oxs3gvdcgv55kqh0u9iw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="operation_type"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-9">
+        <addForeignKeyConstraint baseColumnNames="devise_id" baseTableName="operations_virement" constraintName="FKeol4nthqstxg03w7ck6wjfil3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="devise"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-10">
+        <addForeignKeyConstraint baseColumnNames="devise_id" baseTableName="paiement_facture" constraintName="FKiuuyksr44lpkurpaleys8r33g" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="devise"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-11">
+        <addForeignKeyConstraint baseColumnNames="statut_id" baseTableName="beneficiaire" constraintName="FKk5w5tl9l8rv9auri3pgt2pev1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="statut"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-12">
+        <addForeignKeyConstraint baseColumnNames="compte_id" baseTableName="paiement_facture" constraintName="FKl4l6qdmyxjmmq9lnwcxc3cply" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="compte"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-13">
+        <addForeignKeyConstraint baseColumnNames="operation_id" baseTableName="operations_virement" constraintName="FKlfw47a6dud9dq5cqg2deavi00" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="operation"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-14">
+        <addForeignKeyConstraint baseColumnNames="statut_id" baseTableName="paiement_facture" constraintName="FKmb5keui2cw98by88iu4uirsic" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="statut"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-15">
+        <addForeignKeyConstraint baseColumnNames="facturier_id" baseTableName="paiement_facture" constraintName="FKnl9uxe6xlvt8flcsvhoo5rhs0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="facturier"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-16">
+        <addForeignKeyConstraint baseColumnNames="banques_partenaires_id" baseTableName="beneficiaire" constraintName="FKq3klh88h6vw9n934no12tosg3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="banques_partenaires"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-17">
+        <addForeignKeyConstraint baseColumnNames="abonne_user_id" baseTableName="beneficiaire" constraintName="FKqfgy7mgip9mc10ouvq0yher5r" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="abonne"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539347548151-18">
+        <addForeignKeyConstraint baseColumnNames="prise_en_charge_id" baseTableName="operation" constraintName="FKta7xjbafamb8odkuel8qf6isb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="prise_en_charge"/>
+    </changeSet>
+</databaseChangeLog>

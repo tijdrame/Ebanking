@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "beneficiaire",
+            "otherEntityName": "beneficiaire",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "titulaire"
+        },
+        {
+            "relationshipName": "devise",
+            "otherEntityName": "devise",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "statut",
+            "otherEntityName": "statut",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "operation",
+            "otherEntityName": "operation",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "montant",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181012120226",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "operations_virement",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

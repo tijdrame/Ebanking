@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="MacintoshHD (generated)" id="1539262032300-1">
+        <createTable tableName="compte">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="comptePK"/>
+            </column>
+            <column name="deleted" type="BOOLEAN"/>
+            <column name="libelle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero_complet" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sens" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="solde" type="FLOAT8"/>
+            <column name="abonne_user_id" type="BIGINT"/>
+            <column name="devise_id" type="BIGINT"/>
+            <column name="type_compte_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539262032300-2">
+        <addForeignKeyConstraint baseColumnNames="type_compte_id" baseTableName="compte" constraintName="FKacx0wxvsvxq9w87rls5xke956" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="type_compte"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539262032300-3">
+        <addForeignKeyConstraint baseColumnNames="abonne_user_id" baseTableName="compte" constraintName="FKdvqyx1mxe018khg68wcmvvf3b" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="abonne"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1539262032300-4">
+        <addForeignKeyConstraint baseColumnNames="devise_id" baseTableName="compte" constraintName="FKgi88fup1dk1ddfrxx8vveaehk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="devise"/>
+    </changeSet>
+</databaseChangeLog>

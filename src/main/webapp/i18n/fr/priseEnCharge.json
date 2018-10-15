@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "priseEnCharge" : {
+            "home": {
+                "title": "Liste des Prises en Charge",
+                "createLabel": "Créer une Prise En Charge",
+                "createOrEditLabel": "Créer ou éditer un Prise En Charge"
+            },
+            "created": "Un nouveau Prise En Charge a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Prise En Charge avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Prise En Charge avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Prise En Charge {{ id }} ?"
+            },
+            "detail": {
+                "title": "Prise En Charge"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

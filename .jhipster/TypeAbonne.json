@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181004094832",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "type_abonne",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

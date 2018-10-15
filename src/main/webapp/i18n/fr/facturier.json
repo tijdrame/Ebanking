@@ -1,0 +1,25 @@
+
+{
+    "ebankingApp": {
+        "facturier" : {
+            "home": {
+                "title": "Liste des Facturiers",
+                "createLabel": "Créer un Facturier",
+                "createOrEditLabel": "Créer ou éditer un Facturier"
+            },
+            "created": "Un nouveau Facturier a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Facturier avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Facturier avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Facturier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Facturier"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "numeroCompte": "Numero Compte",
+            "deleted2": "Deleted"
+        }
+    }
+}

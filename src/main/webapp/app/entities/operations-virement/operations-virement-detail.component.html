@@ -1,0 +1,58 @@
+
+<div *ngIf="operationsVirement">
+    <h2><span jhiTranslate="ebankingApp.operationsVirement.detail.title">Operations Virement</span> {{operationsVirement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ebankingApp.operationsVirement.montant">Montant</span></dt>
+        <dd>
+            <span>{{operationsVirement.montant}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationsVirement.code">Code</span></dt>
+        <dd>
+            <span>{{operationsVirement.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationsVirement.deleted">Deleted</span></dt>
+        <dd>
+            <span>{{operationsVirement.deleted}}</span>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationsVirement.beneficiaire">Beneficiaire</span></dt>
+        <dd>
+            <div *ngIf="operationsVirement.beneficiaire">
+                <a [routerLink]="['/beneficiaire', operationsVirement.beneficiaire?.id]">{{operationsVirement.beneficiaire?.titulaire}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationsVirement.devise">Devise</span></dt>
+        <dd>
+            <div *ngIf="operationsVirement.devise">
+                <a [routerLink]="['/devise', operationsVirement.devise?.id]">{{operationsVirement.devise?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationsVirement.statut">Statut</span></dt>
+        <dd>
+            <div *ngIf="operationsVirement.statut">
+                <a [routerLink]="['/statut', operationsVirement.statut?.id]">{{operationsVirement.statut?.libelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ebankingApp.operationsVirement.operation">Operation</span></dt>
+        <dd>
+            <div *ngIf="operationsVirement.operation">
+                <a [routerLink]="['/operation', operationsVirement.operation?.id]">{{operationsVirement.operation?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'operations-virement/'+ operationsVirement.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,141 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPaiementFactureLabel" jhiTranslate="ebankingApp.paiementFacture.home.createOrEditLabel">Create or edit a Paiement Facture</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!paiementFacture.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="paiementFacture.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.numeroFacture" for="field_numeroFacture">Numero Facture</label>
+            <input type="text" class="form-control" name="numeroFacture" id="field_numeroFacture"
+                [(ngModel)]="paiementFacture.numeroFacture" required/>
+            <div [hidden]="!(editForm.controls.numeroFacture?.dirty && editForm.controls.numeroFacture?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.numeroFacture?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.montant" for="field_montant">Montant</label>
+            <input type="number" class="form-control" name="montant" id="field_montant"
+                [(ngModel)]="paiementFacture.montant" required/>
+            <div [hidden]="!(editForm.controls.montant?.dirty && editForm.controls.montant?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.montant?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.montant?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.dateDebut" for="field_dateDebut">Date Debut</label>
+            <div class="input-group">
+                <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" ngbDatepicker  #dateDebutDp="ngbDatepicker" [(ngModel)]="paiementFacture.dateDebut"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateDebutDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateDebut?.dirty && editForm.controls.dateDebut?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateDebut?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.dateFin" for="field_dateFin">Date Fin</label>
+            <div class="input-group">
+                <input id="field_dateFin" type="text" class="form-control" name="dateFin" ngbDatepicker  #dateFinDp="ngbDatepicker" [(ngModel)]="paiementFacture.dateFin"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateFinDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateFin?.dirty && editForm.controls.dateFin?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateFin?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.dateAcceptation" for="field_dateAcceptation">Date Acceptation</label>
+            <div class="input-group">
+                <input id="field_dateAcceptation" type="text" class="form-control" name="dateAcceptation" ngbDatepicker  #dateAcceptationDp="ngbDatepicker" [(ngModel)]="paiementFacture.dateAcceptation"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateAcceptationDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.dateDemande" for="field_dateDemande">Date Demande</label>
+            <div class="input-group">
+                <input id="field_dateDemande" type="text" class="form-control" name="dateDemande" ngbDatepicker  #dateDemandeDp="ngbDatepicker" [(ngModel)]="paiementFacture.dateDemande"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateDemandeDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.estTelecharge" for="field_estTelecharge">Est Telecharge</label>
+            <input type="checkbox" class="form-control" name="estTelecharge" id="field_estTelecharge"
+                [(ngModel)]="paiementFacture.estTelecharge" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.deleted" for="field_deleted">Deleted</label>
+            <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                [(ngModel)]="paiementFacture.deleted" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.devise" for="field_devise">Devise</label>
+            <select class="form-control" id="field_devise" name="devise" [(ngModel)]="paiementFacture.devise" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="deviseOption.id === paiementFacture.devise?.id ? paiementFacture.devise : deviseOption" *ngFor="let deviseOption of devises; trackBy: trackDeviseById">{{deviseOption.libelle}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.compte" for="field_compte">Compte</label>
+            <select class="form-control" id="field_compte" name="compte" [(ngModel)]="paiementFacture.compte" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="compteOption.id === paiementFacture.compte?.id ? paiementFacture.compte : compteOption" *ngFor="let compteOption of comptes; trackBy: trackCompteById">{{compteOption.libelle}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.facturier" for="field_facturier">Facturier</label>
+            <select class="form-control" id="field_facturier" name="facturier" [(ngModel)]="paiementFacture.facturier" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="facturierOption.id === paiementFacture.facturier?.id ? paiementFacture.facturier : facturierOption" *ngFor="let facturierOption of facturiers; trackBy: trackFacturierById">{{facturierOption.libelle}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ebankingApp.paiementFacture.statut" for="field_statut">Statut</label>
+            <select class="form-control" id="field_statut" name="statut" [(ngModel)]="paiementFacture.statut" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="statutOption.id === paiementFacture.statut?.id ? paiementFacture.statut : statutOption" *ngFor="let statutOption of statuts; trackBy: trackStatutById">{{statutOption.libelle}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

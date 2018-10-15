@@ -1,0 +1,16 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="MacintoshHD (generated)" id="1538668608419-1">
+        <dropUniqueConstraint constraintName="abonne_user_id_key" tableName="abonne"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1538668608419-2">
+        <dropColumn columnName="id" tableName="abonne"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1538668608419-3">
+        <addNotNullConstraint columnDataType="bigint" columnName="user_id" tableName="abonne"/>
+    </changeSet>
+    <changeSet author="MacintoshHD (generated)" id="1538668608419-4">
+        <dropPrimaryKey tableName="abonne"/>
+        <addPrimaryKey columnNames="user_id" constraintName="abonnePK" tableName="abonne"/>
+    </changeSet>
+</databaseChangeLog>

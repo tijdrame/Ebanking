@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "operationType" : {
+            "home": {
+                "title": "Operation Types",
+                "createLabel": "Create a new Operation Type",
+                "createOrEditLabel": "Create or edit a Operation Type"
+            },
+            "created": "A new Operation Type is created with identifier {{ param }}",
+            "updated": "A Operation Type is updated with identifier {{ param }}",
+            "deleted": "A Operation Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Operation Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Operation Type"
+            },
+            "libelle": "Libelle",
+            "code": "Code",
+            "deleted": "Deleted"
+        }
+    }
+}

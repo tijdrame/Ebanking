@@ -1,0 +1,24 @@
+
+{
+    "ebankingApp": {
+        "nbreFeuillesChequier" : {
+            "home": {
+                "title": "Liste des Types de Feuille deChequiers",
+                "createLabel": "Créer une Feuille Chequier",
+                "createOrEditLabel": "Créer ou éditer une Feuille Chequier"
+            },
+            "created": "Une nouvelle Feuille Chequier a été créée avec l'identifiant {{ param }}",
+            "updated": "La Feuille Chequier avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Feuille Chequier avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Feuilles Chequier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Nbre Feuilles Chequier"
+            },
+            "nbFeuilles": "Nb Feuilles",
+            "libelle": "Libelle",
+            "deleted": "Deleted"
+        }
+    }
+}
